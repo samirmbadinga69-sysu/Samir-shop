@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Samir Shop</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+  padding-bottom: 75px;
+}
+
+/* =========================
+   BARRE DU HAUT
+========================= */
+
+.top-banner {
+  background: linear-gradient(135deg, #ff4d00, #ff7a00);
+  color: white;
+  padding: 12px 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.top-banner span {
+  background: white;
+  color: #ff4d00;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin-right: 8px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  background: white;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid #eee;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111;
+}
+
+.cart {
+  background: #ff5a00;
+  border: none;
+  color: white;
+  border-radius: 20px;
+  padding: 9px 14px;
+  font-weight: bold;
+}
+
+/* =========================
+   BARRE DE RECHERCHE
+========================= */
+
+.search {
+  display: flex;
+  align-items: center;
+  margin-top: 14px;
+  background: white;
+  border: 2px solid #ff6500;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 52px;
+}
+
+.search-icon {
+  font-size: 23px;
+  padding-left: 12px;
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 0 10px;
+}
+
+.search button {
+  height: 100%;
+  width: 55px;
+  border: none;
+  background: #ff6500;
+  color: white;
+  font-size: 22px;
+}
+
+/* =========================
+   RACCOURCIS
+========================= */
+
+.quick-menu {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 15px 0 5px;
+  scrollbar-width: none;
+}
+
+.quick-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.quick-card {
+  min-width: 115px;
+  background: white;
+  border-radius: 10px;
+  padding: 13px 8px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* =========================
+   PROMOTION
+========================= */
+
+.promo {
+  margin: 12px 12px 18px;
+  background: linear-gradient(90deg, #fff0df, #ffdada);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-size: 13px;
+}
+
+.promo strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.promo-line {
+  width: 1px;
+  height: 45px;
+  background: #ffb5a0;
+}
+
+/* =========================
+   TITRE
+========================= */
+
+.section-title {
+  padding: 0 15px;
+  margin: 18px 0 10px;
+  font-size: 21px;
+}
+
+/* =========================
+   CATÉGORIES
+========================= */
+
+.categories {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 5px 15px 15px;
+  scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.category {
+  min-width: 145px;
+  background: white;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.category-image {
+  height: 95px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  background: linear-gradient(135deg, #eee, #ddd);
+}
+
+.category p {
+  margin: 8px 3px 3px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* =========================
+   FILTRES
+========================= */
+
+.filters {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 15px 15px;
+  scrollbar-width: none;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filter {
+  white-space: nowrap;
+  background: white;
+  border: none;
+  border-radius: 25px;
+  padding: 11px 17px;
+  font-size: 15px;
+}
+
+.filter.active {
+  border: 1px solid #111;
+  font-weight: bold;
+}
+
+/* =========================
+   PRODUITS
+========================= */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding: 0 10px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+
+  /* PAS D'OMBRE */
+  box-shadow: none;
+}
+
+.product-image {
+  height: 190px;
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  padding: 10px;
+}
+
+.info h3 {
+  font-size: 15px;
+  margin: 0 0 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description {
+  color: #666;
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.shipping {
+  color: #777;
+  font-size: 12px;
+}
+
+.buy {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #ff5a00;
+  color: white;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+  background: white;
+  margin-top: 20px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.contact h2 {
+  margin-top: 0;
+}
+
+.phone {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* =========================
+   NAVIGATION BAS
+========================= */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: white;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 50;
+}
+
+.nav-item {
+  text-align: center;
+  font-size: 12px;
+  color: #333;
+}
+
+.nav-item span {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 2px;
+}
+
+.nav-item.active {
+  color: #ff5a00;
+}
+
+/* =========================
+   GRAND ÉCRAN
+========================= */
+
+@media (min-width: 700px) {
+
+  body {
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .products {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .bottom-nav {
+    max-width: 1100px;
+    margin: auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PROMOTION DU HAUT -->
+
+<div class="top-banner">
+  <span>Super</span>
+  Jusqu'à -20% sur Samir Shop
+</div>
+
+
+<!-- HEADER -->
+
+<header>
+
+  <div class="header-top">
+
+    <div class="logo">
+      SAMIR SHOP
+    </div>
+
+    <button class="cart">
+      🛒 Panier (<span id="count">0</span>)
+    </button>
+
+  </div>
+
+
+  <!-- RECHERCHE -->
+
+  <div class="search">
+
+    <div class="search-icon">
+      🔎
+    </div>
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Que recherchez-vous ?"
+      onkeyup="searchProducts()"
+    >
+
+    <button>
+      🔍
+    </button>
+
+  </div>
+
+
+  <!-- RACCOURCIS -->
+
+  <div class="quick-menu">
+
+    <div class="quick-card">
+      🛍️<br>
+      Explorer<br>les catégories
+    </div>
+
+    <div class="quick-card">
+      🎯<br>
+      Demander<br>un devis
+    </div>
+
+    <div class="quick-card">
+      🏆<br>
+      Top du<br>classement
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- BANDEAU PROMOTION -->
+
+<div class="promo">
+
+  <div>
+    🚚
+    <strong>Livraison GRATUITE</strong>
+    sur votre première commande
+  </div>
+
+  <div class="promo-line"></div>
+
+  <div>
+    🛡️
+    <strong>Protection de commande</strong>
+    jusqu'à la livraison
+  </div>
+
+</div>
+
+
+<!-- CATÉGORIES -->
+
+<h2 class="section-title">
+  Découvrez nos catégories
+</h2>
+
+<div class="categories">
+
+  <div class="category">
+    <div class="category-image">👕</div>
+    <p>Vêtements</p>
+  </div>
+
+  <div class="category">
+    <div class="category-image">👟</div>
+    <p>Chaussures</p>
+  </div>
+
+  <div class="category">
+    <div class="category-image">⌚</div>
+    <p>Montres</p>
+  </div>
+
+  <div class="category">
+    <div class="category-image">🧢</div>
+    <p>Accessoires</p>
+  </div>
+
+</div>
+
+
+<!-- FILTRES -->
+
+<div class="filters">
+
+  <button class="filter active">
+    🧡 Tous
+  </button>
+
+  <button class="filter">
+    🔥 Populaires
+  </button>
+
+  <button class="filter">
+    💰 Meilleures offres
+  </button>
+
+  <button class="filter">
+    ✨ Nouveautés
+  </button>
+
+</div>
+
+
+<!-- PRODUITS -->
+
+<h2 class="section-title">
+  Produits populaires
+</h2>
+
+<div class="products">
+
+
+  <!-- PRODUIT 1 -->
+
+  <div class="card">
+
+    <div class="product-image">
+      👕
+    </div>
+
+    <div class="info">
+
+      <h3>
+        T-shirt Premium
+      </h3>
+
+      <p class="description">
+        T-shirt moderne et confortable
+      </p>
+
+      <div class="price">
+        15 000 FCFA
+      </div>
+
+      <div class="shipping">
+        🚚 Livraison disponible
+      </div>
+
+      <button class="buy" onclick="addCart()">
+        Ajouter au panier
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- PRODUIT 2 -->
+
+  <div class="card">
+
+    <div class="product-image">
+      👟
+    </div>
+
+    <div class="info">
+
+      <h3>
+        Baskets tendance
+      </h3>
+
+      <p class="description">
+        Confort et style au quotidien
+      </p>
+
+      <div class="price">
+        25 000 FCFA
+      </div>
+
+      <div class="shipping">
+        🚚 Livraison disponible
+      </div>
+
+      <button class="buy" onclick="addCart()">
+        Ajouter au panier
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- PRODUIT 3 -->
+
+  <div class="card">
+
+    <div class="product-image">
+      ⌚
+    </div>
+
+    <div class="info">
+
+      <h3>
+        Montre Élégance
+      </h3>
+
+      <p class="description">
+        Une montre moderne
+      </p>
+
+      <div class="price">
+        30 000 FCFA
+      </div>
+
+      <div class="shipping">
+        🚚 Livraison disponible
+      </div>
+
+      <button class="buy" onclick="addCart()">
+        Ajouter au panier
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- PRODUIT 4 -->
+
+  <div class="card">
+
+    <div class="product-image">
+      🧢
+    </div>
+
+    <div class="info">
+
+      <h3>
+        Casquette Premium
+      </h3>
+
+      <p class="description">
+        Accessoire tendance
+      </p>
+
+      <div class="price">
+        10 000 FCFA
+      </div>
+
+      <div class="shipping">
+        🚚 Livraison disponible
+      </div>
+
+      <button class="buy" onclick="addCart()">
+        Ajouter au panier
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<section class="contact">
+
+  <h2>
+    📞 Contact
+  </h2>
+
+  <p>
+    Pour commander ou demander les prix :
+  </p>
+
+  <div class="phone">
+    062176872
+  </div>
+
+</section>
+
+
+<!-- NAVIGATION MOBILE -->
+
+<nav class="bottom-nav">
+
+  <div class="nav-item active">
+    <span>🏠</span>
+    Accueil
+  </div>
+
+  <div class="nav-item">
+    <span>▦</span>
+    Catégories
+  </div>
+
+  <div class="nav-item">
+    <span>💬</span>
+    Messages
+  </div>
+
+  <div class="nav-item">
+    <span>🛒</span>
+    Panier
+  </div>
+
+  <div class="nav-item">
+    <span>👤</span>
+    Mon compte
+  </div>
+
+</nav>
+
+
+<script>
+
+/* =========================
+   PANIER
+========================= */
+
+let count = 0;
+
+function addCart() {
+
+  count++;
+
+  document.getElementById("count").textContent = count;
+
+}
+
+
+/* =========================
+   RECHERCHE
+========================= */
+
+function searchProducts() {
+
+  let input =
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+  let products =
+    document.querySelectorAll(".card");
+
+  products.forEach(function(product) {
+
+    let name =
+      product.querySelector("h3")
+      .textContent
+      .toLowerCase();
+
+    if (name.includes(input)) {
+
+      product.style.display = "";
+
+    } else {
+
+      product.style.display = "none";
+
+    }
+
+  });
+
+}
+
+</script>
+
+</body>
+</html>
